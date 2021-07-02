@@ -1,10 +1,167 @@
 {
   "version": 2,
   "projects": {
-    "shared-auth": "libs/shared/auth",
-    "shared-domain": "libs/shared/domain"
+    "ng-nglib1": {
+      "projectType": "library",
+      "root": "libs/ng/nglib1",
+      "sourceRoot": "libs/ng/nglib1/src",
+      "prefix": "myorg",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/ng/nglib1"],
+          "options": {
+            "project": "libs/ng/nglib1/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ng/nglib1/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/ng/nglib1/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ng/nglib1"],
+          "options": {
+            "jestConfig": "libs/ng/nglib1/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ng/nglib1/src/**/*.ts",
+              "libs/ng/nglib1/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "ng-nglib2": {
+      "projectType": "library",
+      "root": "libs/ng/nglib2",
+      "sourceRoot": "libs/ng/nglib2/src",
+      "prefix": "myorg",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/ng/nglib2"],
+          "options": {
+            "project": "libs/ng/nglib2/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ng/nglib2/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/ng/nglib2/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ng/nglib2"],
+          "options": {
+            "jestConfig": "libs/ng/nglib2/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ng/nglib2/src/**/*.ts",
+              "libs/ng/nglib2/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-auth": {
+      "root": "libs/shared/auth",
+      "sourceRoot": "libs/shared/auth/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/auth",
+            "main": "libs/shared/auth/src/index.ts",
+            "tsConfig": "libs/shared/auth/tsconfig.lib.json",
+            "assets": ["libs/shared/auth/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/auth/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/auth"],
+          "options": {
+            "jestConfig": "libs/shared/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": [],
+      "configFilePath": "libs/shared/auth/project.json"
+    },
+    "shared-domain": {
+      "root": "libs/shared/domain",
+      "sourceRoot": "libs/shared/domain/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/shared/domain",
+            "main": "libs/shared/domain/src/index.ts",
+            "tsConfig": "libs/shared/domain/tsconfig.lib.json",
+            "assets": ["libs/shared/domain/*.md"]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/domain/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/domain"],
+          "options": {
+            "jestConfig": "libs/shared/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": [],
+      "configFilePath": "libs/shared/domain/project.json"
+    }
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {}
   }
 }

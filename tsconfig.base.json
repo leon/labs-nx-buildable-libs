@@ -15,6 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@myorg/ng/nglib1": ["libs/ng/nglib1/src/index.ts"],
+      "@myorg/ng/nglib2": ["libs/ng/nglib2/src/index.ts"],
       "@myorg/shared/auth": ["libs/shared/auth/src/index.ts"],
       "@myorg/shared/domain": ["libs/shared/domain/src/index.ts"]
     }
